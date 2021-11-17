@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 import yaml
 import requests
-import asyncio
 
 with open("config.yaml","r") as stream:
     try:
@@ -32,6 +31,9 @@ def invite():
 
 app = Flask(__name__)
 
+theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
+border = "border-dark" if config["dark_theme"] else ""
+catpcha_theme = "dark" if config["dark_theme"] else "light"
 
 @app.route("/")
 def index():
@@ -42,10 +44,6 @@ def index():
             i = invite()
             return redirect(f"https://discord.gg/{i}")
         else:
-            return render_template("index.html", public=config["recaptcha"]["public"], failed=True)
+            return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme)
 
-    return render_template("index.html", public=config["recaptcha"]["public"], failed=False)
-
-
-app.run()
-
+    return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)

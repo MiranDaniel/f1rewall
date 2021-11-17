@@ -3,6 +3,9 @@
 # this configuration file contains your credentials, make sure not to share it with ANYONE.
 # anyone with your Discord private key can controll your bot!
 #
+
+dark_theme: false
+
 recaptcha:
   # put your public recaptcha key here!
   public: 6LdSjzsdAAAAAGghQsVEiSejFVm3AmmXS-4Lo2Gk
@@ -16,3 +19,6 @@ discord:
 
   # DO NOT LEAK THIS
   private: ODQ5Mjk5NzM2ODMzMTYzMjk0.YLZKBA.xKpuYsBLthuvKPjzqVbvbo3ywQk
+
+server:
+  port: 5000

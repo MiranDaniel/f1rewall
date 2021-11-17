@@ -12,11 +12,11 @@
     <style>
         html,
         body {
-            background: rgb(34, 34, 34);
-            background: -moz-linear-gradient(45deg, rgba(34, 34, 34, 1) 30%, rgba(47, 47, 47, 1) 50%, rgba(34, 34, 34, 1) 90%);
-            background: -webkit-linear-gradient(45deg, rgba(34, 34, 34, 1) 30%, rgba(47, 47, 47, 1) 50%, rgba(34, 34, 34, 1) 90%);
-            background: linear-gradient(45deg, rgba(34, 34, 34, 1) 30%, rgba(47, 47, 47, 1) 50%, rgba(34, 34, 34, 1) 90%);
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#222222", endColorstr="#222222", GradientType=1);
+
+            background-image: url("{{url_for('static', filename='background.png')}}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
         .logo {
@@ -59,7 +59,7 @@
     </style>
 </head>
 
-<body class="text-center text-light">
+<body class="text-center {{theme}}">
     <div class="body">
         <header class="container">
             <div class="row">
@@ -70,7 +70,7 @@
         </header>
         <br>
         <div class="container" style="max-width: 1000px;">
-            <div class="border main rounded my-5">
+            <div class="border {{border}} main rounded my-5">
                 <div class="row mx-2">
                     <div class="col">
                         <h2 class="display-6">Join our Discord</h2>
@@ -79,7 +79,7 @@
                 </div>
                 <div class="row">
                     <form action="?" method="POST" class="f">
-                        <div data-callback="alertSuccess" class="g-recaptcha" data-sitekey="{{public}}"></div>
+                        <div data-callback="alertSuccess" data-theme="{{catpcha_theme}}" class="g-recaptcha" data-sitekey="{{public}}"></div>
                     </form>
                 </div>
                 <div class="row">

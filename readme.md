@@ -2,8 +2,9 @@
 
 ## Setup guide:
 
-**It is recommended to let your teams developer set this up.**
+**It is recommended to let your teams developer/sysadmin set this up.**
 
+*The page is made to be easily editable by anyone with HTML/CSS/Bootstrap experience*
 
 ### 1. Creating the bot
 
@@ -20,7 +21,6 @@ https://discord.com/developers/applications
 8. Paste your token in the config.yaml file, follow the instructions in it
 9. Go back to the **General information** section and copy the app ID
 10. Insert your ID here -> https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=1
-
 11. Visit the link and add the bot!
 
 Congrats! Your bot is now ready!
@@ -45,3 +45,4 @@ Congrats! Your bot is now configured!
 6. Paste your site key in the config.yaml file, follow the instructions in it
 7. Paste your secret key in the config.yaml file, follow the instructions in it
 
+Congrats! Your recaptcha is now ready!
