@@ -10,17 +10,17 @@ dark_theme: false
 
 recaptcha:
   # put your public recaptcha key here!
-  public: 6LdSjzsdAAAAAGghQsVEiSejFVm3AmmXS-4Lo2Gk
+  public: 
   
   # DO NOT LEAK THIS
-  private: 6LdSjzsdAAAAAJi7n7M4KG3Hhqcc0pIaVexXx75x
+  private: 
 
 discord:
   # users will be invited to this room, it should be public
-  welcome_room: 910523584416452700
+  welcome_room: 
 
   # DO NOT LEAK THIS
-  private: ODQ5Mjk5NzM2ODMzMTYzMjk0.YLZKBA.xKpuYsBLthuvKPjzqVbvbo3ywQk
+  private: 
 
 server:
   # the script will host the gateway on this port
