@@ -9,5 +9,7 @@ with open("config.yaml","r") as stream:
         print(exc)
         quit(1)
 
+print(f"Serving on port {config['server']['port']}")
+
 http_server = WSGIServer(('', config["server"]["port"]), app)
 http_server.serve_forever()

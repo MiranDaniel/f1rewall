@@ -4,6 +4,8 @@
 # anyone with your Discord private key can controll your bot!
 #
 
+# false for light theme
+# true  for dark  theme
 dark_theme: false
 
 recaptcha:
@@ -21,4 +23,6 @@ discord:
   private: ODQ5Mjk5NzM2ODMzMTYzMjk0.YLZKBA.xKpuYsBLthuvKPjzqVbvbo3ywQk
 
 server:
-  port: 5000
+  # the script will host the gateway on this port
+  # defaults to 80
+  port: 80
