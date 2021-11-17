@@ -1,0 +1,18 @@
+#
+# Hello there, user
+# this configuration file contains your credentials, make sure not to share it with ANYONE.
+# anyone with your Discord private key can controll your bot!
+#
+recaptcha:
+  # put your public recaptcha key here!
+  public: 6LdSjzsdAAAAAGghQsVEiSejFVm3AmmXS-4Lo2Gk
+  
+  # DO NOT LEAK THIS
+  private: 6LdSjzsdAAAAAJi7n7M4KG3Hhqcc0pIaVexXx75x
+
+discord:
+  # users will be invited to this room, it should be public
+  welcome_room: 910523584416452700
+
+  # DO NOT LEAK THIS
+  private: ODQ5Mjk5NzM2ODMzMTYzMjk0.YLZKBA.xKpuYsBLthuvKPjzqVbvbo3ywQk
