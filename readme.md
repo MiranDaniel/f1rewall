@@ -99,8 +99,6 @@ Read the documentation file in `docs/customisation.md`
 
 ## Support
 
-This project is provided for free. Free as in freedom, not beer.
-
 If you're having issues with the app please open an issue or discussion thread.
 
 Private support can be provided. Find the contact information on https://mirandaniel.com/
