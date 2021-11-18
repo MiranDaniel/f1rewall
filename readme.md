@@ -25,6 +25,10 @@ Light theme default        |  Dark theme default
 
 *The page is made to be easily editable by anyone with HTML/CSS/Bootstrap experience*
 
+### 0. Getting the code
+
+1. run `git clone https://github.com/MiranDaniel/f1rewall`
+A folder called `f1rewall-master` with the source code has been created!
 
 ### 1. Creating the bot
 0. Got to the Discord Developer Portal to create your bot.
@@ -108,9 +112,14 @@ If you're having issues with the app please open an issue or discussion thread.
 
 Private support can be provided. Find the contact information on https://mirandaniel.com/
 
-## Donations
+## Donations <3
 
-ETH/POLYGON/BSC: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
+* Ethereum: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
+* Polygon: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
+* Binance Smart Chain: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
+* Monero: `42dN1SjyQNFMu3hPjJZqXa4Z8oMMLLiPzHmC4q8h3DXWS2gHxpjACxcWyAReJGqN4RX79VTE8pEn6SVxgjCJTXhg5ECB9Qe`
+* Banano: `ban_1aws637mb3qnuf9j8swzufq3nj3fttuzkixbd817nmmhyms6a6kt1zyptq87`
+* Nano: `nano_33k5ggoycqgft9on81kd8sqkdi4c38robs4jq9xmbd6j1wgfmqbukqym38ug`
 
 ## License - MIT
 <img src="https://opensource.org/files/OSIApproved_1.png" width="100"/>
