@@ -3,10 +3,12 @@
 
 ---
 
-<img src="https://media.discordapp.net/attachments/795438999761977394/910258446681657374/unknown.png" height="200"/>
-<img src="https://cdn.discordapp.com/attachments/795438999761977394/910258701204602920/unknown.png" height="200"/>
-<img src="https://cdn.discordapp.com/attachments/795438999761977394/910258769999568976/unknown.png" height="200"/>
 
+Light theme default        |  Dark theme default
+:-------------------------:|:-------------------------:
+<img src="https://media.discordapp.net/attachments/795438999761977394/910258446681657374/unknown.png" height="200"/> | <img src="https://cdn.discordapp.com/attachments/795438999761977394/910258701204602920/unknown.png" height="200"/>
+
+*All websites elements can be customised easily*
 
 ---
 
