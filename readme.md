@@ -75,6 +75,10 @@ Congrats! Your recaptcha is now ready!
 2. Run `sh run.sh` to start the server
 3. The script will now host your gateway on the port specified in config.yaml
 
+#### Debugging
+
+If you get the `make: command not found` error, run `sudo apt-get install build-essential` to install make.
+
 ## Network configuration
 
 ### 1. Firewall configuration
