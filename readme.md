@@ -1,4 +1,14 @@
 # f1rewall
+*The sleek, simple and scalable invite gateway for your Discord community*
+
+---
+
+<img src="https://media.discordapp.net/attachments/795438999761977394/910258446681657374/unknown.png" height="200"/>
+<img src="https://cdn.discordapp.com/attachments/795438999761977394/910258701204602920/unknown.png" height="200"/>
+<img src="https://cdn.discordapp.com/attachments/795438999761977394/910258769999568976/unknown.png" height="200"/>
+
+
+---
 
 ## Setup guide:
 
@@ -54,18 +64,24 @@ Congrats! Your recaptcha is now ready!
 2. Run `sh run.sh` to start the server
 3. The script will now host your gateway on the port specified in config.yaml
 
-### 5. Firewall configuration
+## Network configuration
+
+### 1. Firewall configuration
 
 1. Configure your firewall and open the port specified in config.yaml
 
-### 6. DNS configuration
+### 2a. DNS configuration
 
 Remember to set a static IP and host on port 80.
 If you want to stop the Apache server from running on port 80, use `sudo systemctl stop apache2`
 
 1. Follow this guide to redirect your chat.<>.<> domain to your chat gateway. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/
 
-### 6. Additional configuration
+### 2b. CloudFlare tunnel configuration
+
+Read the documentation file in `docs/clouflare_tunnel.md`
+
+## Discord configuration
 
 1. Make sure the gateway works
 2. Disallow users on your server from making new invites, let only the bot create them
@@ -73,10 +89,9 @@ If you want to stop the Apache server from running on port 80, use `sudo systemc
 4. Put the website background in static/background.png
 5. Set the `dark_theme` value in config.yaml to set the website text color
 
-## Modifications
+## Customisation
 
-The website look can be changed in the templates/index.html file
-
+Read the documentation file in `docs/customisation.md`
 
 ## Support
 
@@ -84,7 +99,7 @@ This project is provided for free. Free as in freedom, not beer.
 
 If you're having issues with the app please open an issue or discussion thread.
 
-I'll try my best to help you.
+Private support can be provided. Find the contact information on https://mirandaniel.com/
 
 ## Donations
 
