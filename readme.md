@@ -1,6 +1,11 @@
 # f1rewall
 *The sleek, simple and scalable invite gateway for your Discord community*
 
+F1rewall is a Discord invite gateway. It lets you easily route your Discord server invites through a controlled page with a captcha.
+It generates a unique, time limited one time invite for every user.
+Thanks to this, you can stop most bots from entering your server.
+
+
 ---
 
 
@@ -14,7 +19,7 @@ Light theme default        |  Dark theme default
 
 ## Setup guide:
 
-**It is recommended to let your teams developer/sysadmin set this up.**
+**It is recommended to let your team's developer/sysadmin set this up.**
 
 **This script was made for Linux/GNU, officially supported distributions are: `debian`, `ubuntu`, `pop!_os`, `fedora` and `raspbian`**
 
@@ -40,7 +45,7 @@ Congrats! Your bot is now ready!
 
 ### 2. Configuring the bot
 
-1. Go to your DiscordApp settings **Advanced** section.
+1. Go to your Discord (app, not dev portal) settings **Advanced** section.
 2. Enable developer mode
 3. Right click the channel you want the bot to create invites to.
 4. Copy channel ID
@@ -62,7 +67,7 @@ Congrats! Your recaptcha is now ready!
 
 ### 4. Running
 
-1. Run `make` to install all dependencies
+1. Run `sudo make` to install all dependencies
 2. Run `sh run.sh` to start the server
 3. The script will now host your gateway on the port specified in config.yaml
 

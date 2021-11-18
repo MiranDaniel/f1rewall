@@ -16,13 +16,14 @@ with open("config.yaml","r") as stream:
         print(exc)
         quit(1)
 
+
 if "dark_theme" not in config:
     print("!! Theme not defined")
 if "recaptcha" in config:
-    if "public" not in config["recaptcha"]:
+    if config["recaptcha"]["public"] == None:
         print("!! Recaptcha public key is not defined, exiting")
         quit(1)
-    if "private" not in config["recaptcha"]:
+    if config["recaptcha"]["private"] == None:
         print("!! Recaptcha private key is not defined, exiting")
         quit(1)
 else:
@@ -30,10 +31,10 @@ else:
     quit(1)
 
 if "discord" in config:
-    if "welcome_room" not in config["discord"]:
+    if config["discord"]["welcome_room"] == None:
         print("!! Discord welcome room not defined, exiting")
         quit(1)
-    if "private" not in config["discord"]:
+    if config["discord"]["private"] == None:
         print("!! Discord private key is not defined, exiting")
         quit(1)
 else:
@@ -41,7 +42,7 @@ else:
     quit(1)
 
 if "server" in config:
-    if "port" not in config["server"]:
+    if config["server"]["port"] == None:
         print("!! Server port not defined, exiting")
         quit(1)
 else:

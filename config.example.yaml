@@ -1,32 +1,31 @@
 #
 # Hello there, user
-# this configuration file contains your credentials, make sure not to share it with ANYONE.
-# anyone with your Discord private key can controll your bot!
+# this configuration file is an example
 #
 
 
 # false for light theme
 # true  for dark  theme
-dark_theme: false
+dark_theme: true
 
 recaptcha:
   # put your public recaptcha key here!
-  public: 
+  public: 6LdgqG8UABBAAAIhm7GOlpEAqRSg_b578t2CBfGYm
   
   # DO NOT LEAK THIS
   # put your private recapthca key here!
-  private: 
+  private: 7LdgqG8UAAAWEBAKezX6XR6jWdZbq4566hh23aqv2e
 
 discord:
   # users will be invited to this room, it should be public
   # put your welcome room ID here
-  welcome_room: 
+  welcome_room: 581832306915016735
 
   # DO NOT LEAK THIS
   # put your Discord bot token here
-  private: 
+  private: DQ5Mjk5NzM2ODMzMTYzMjk0.YLZKBA.xKpuYsBLthuvKPjzqVbvbo3ywQk
 
 server:
   # the script will host the gateway on this port
   # defaults to 80
-  port: 80
+  port: 5000
