@@ -1,10 +1,7 @@
 """
 Copyright 2021 MiranDaniel
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """
 
@@ -18,6 +15,38 @@ with open("config.yaml","r") as stream:
     except yaml.YAMLError as exc:
         print(exc)
         quit(1)
+
+if "dark_theme" not in config:
+    print("!! Theme not defined")
+if "recaptcha" in config:
+    if "public" not in config["recaptcha"]:
+        print("!! Recaptcha public key is not defined, exiting")
+        quit(1)
+    if "private" not in config["recaptcha"]:
+        print("!! Recaptcha private key is not defined, exiting")
+        quit(1)
+else:
+    print("!! Recaptcha config doesnt exist, exiting")
+    quit(1)
+
+if "discord" in config:
+    if "welcome_room" not in config["discord"]:
+        print("!! Discord welcome room not defined, exiting")
+        quit(1)
+    if "private" not in config["discord"]:
+        print("!! Discord private key is not defined, exiting")
+        quit(1)
+else:
+    print("!! Discord config doesnt exist, exiting")
+    quit(1)
+
+if "server" in config:
+    if "port" not in config["server"]:
+        print("!! Server port not defined, exiting")
+        quit(1)
+else:
+    print("!! Sever config not defined, exiting")
+    quit(1)
 
 def recaptcha(token):
     recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
