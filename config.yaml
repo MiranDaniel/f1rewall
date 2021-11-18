@@ -25,4 +25,4 @@ discord:
 server:
   # the script will host the gateway on this port
   # defaults to 80
-  port: 80
+  port: 5000

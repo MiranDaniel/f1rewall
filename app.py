@@ -45,15 +45,16 @@ theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-
 border = "border-dark" if config["dark_theme"] else ""
 catpcha_theme = "dark" if config["dark_theme"] else "light"
 
-@app.route("/")
-def index():
-    key = request.args.get('key')
-    if key:
-        r = recaptcha(key)
-        if r["success"]:
-            i = invite()
-            return redirect(f"https://discord.gg/{i}")
-        else:
-            return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme)
 
-    return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)
+@app.route("/") # main function
+def index():
+    key = request.args.get('key') # get key parameter from URL
+    if key: # if key set
+        r = recaptcha(key) # confirm captcha
+        if r["success"]: # if ok
+            i = invite() # generate new invite
+            return redirect(f"https://discord.gg/{i}") # redirect user to new invite
+        else: # if captcha invalid
+            return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme) # return error page
+    # if not key
+    return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme) # return normal page

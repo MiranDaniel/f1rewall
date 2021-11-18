@@ -63,7 +63,9 @@ Congrats! Your recaptcha is now ready!
 Remember to set a static IP and host on port 80.
 If you want to stop the Apache server from running on port 80, use `sudo systemctl stop apache2`
 
-1. Follow this guide to redirect your chat.<>.<> domain to your chat gateway. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/
+Follow this guide to redirect your chat.<>.<> domain to your chat gateway. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/
+
+You can also use the CloudFlare Argo Tunnel.
 
 ### 6. Additional configuration
 
