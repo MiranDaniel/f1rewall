@@ -25,6 +25,8 @@ Light theme default        |  Dark theme default
 
 *The page is made to be easily editable by anyone with HTML/CSS/Bootstrap experience*
 
+
+
 ### 0. Getting the code
 
 1. run `git clone https://github.com/MiranDaniel/f1rewall`
@@ -71,6 +73,8 @@ Congrats! Your recaptcha is now ready!
 
 ### 4. Running
 
+1. Run `apt-get update -y && apt-get upgrade -y` to update your packages
+1. Run `apt-get install python3-dev -y && apt-get install python3-venv -y` to install the required dependencies for Python
 1. Run `sudo make` to install all dependencies
 2. Run `sh run.sh` to start the server
 3. The script will now host your gateway on the port specified in config.yaml
