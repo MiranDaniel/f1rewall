@@ -50,6 +50,7 @@ else:
     quit(1)
 
 def recaptcha(token):
+    print(f"Verifying recaptcha {token[:15]}")
     recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
     payload = {
         'secret': config["recaptcha"]["private"],
@@ -61,12 +62,14 @@ def recaptcha(token):
     return result
 
 def invite():
+    print("Generating new invite!")
     resp = requests.post(
         'https://discordapp.com/api/channels/%s/invites' % config["discord"]["welcome_room"], 
         headers={'Authorization': 'Bot %s' % config["discord"]["private"]},
         json={'max_uses': 1, 'unique': True, 'expires': 300}
     )
     i = resp.json()
+    print("Generated new invite!")
     return i["code"]
 
 app = Flask(__name__)
@@ -82,9 +85,11 @@ def index():
     if key: # if key set
         r = recaptcha(key) # confirm captcha
         if r["success"]: # if ok
+            print(f"Recaptcha {key[:30]} verified!")
             i = invite() # generate new invite
             return redirect(f"https://discord.gg/{i}") # redirect user to new invite
         else: # if captcha invalid
+            print(f"Recaptcha {key[:30]} failed!")
             return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme) # return error page
     # if not key
     return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme) # return normal page
