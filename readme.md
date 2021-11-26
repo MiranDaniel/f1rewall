@@ -1,6 +1,20 @@
 # f1rewall
 *The sleek, simple and scalable invite gateway for your Discord community*
 
+---
+**Made in**
+![](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)![](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)![](https://img.shields.io/badge/Discord_API-7289DA?style=for-the-badge&logo=discord&logoColor=white)![](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)![](https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white)
+
+**Officially supports**
+![](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
+![](https://img.shields.io/badge/Debian-A81D33?style=for-the-badge&logo=debian&logoColor=white)![](https://img.shields.io/badge/Ubuntu-E95420?style=for-the-badge&logo=ubuntu&logoColor=white)![](https://img.shields.io/badge/Pop!_OS-48B9C7?style=for-the-badge&logo=Pop!_OS&logoColor=white)![](https://img.shields.io/badge/Fedora-294172?style=for-the-badge&logo=fedora&logoColor=white)![](https://img.shields.io/badge/Raspbian-A22846?style=for-the-badge&logo=raspberrypi&logoColor=white)
+
+**Optional supported technologies**
+![](https://img.shields.io/badge/Cloudflare-F38020?style=for-the-badge&logo=Cloudflare&logoColor=white)
+
+---
+
+
 F1rewall is a Discord invite gateway. It lets you easily route your Discord server invites through a controlled page with a captcha.
 It generates a unique, time limited one time invite for every user.
 Thanks to this, you can stop most bots from entering your server.
