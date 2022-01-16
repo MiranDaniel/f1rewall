@@ -64,12 +64,16 @@ def recaptcha(token):
 def invite():
     print("Generating new invite!")
     resp = requests.post(
-        'https://discordapp.com/api/channels/%s/invites' % config["discord"]["welcome_room"], 
-        headers={'Authorization': 'Bot %s' % config["discord"]["private"]},
-        json={'max_uses': 1, 'unique': True, 'expires': 300}
+        'https://discordapp.com/api/channels/{}/invites'.format(config["discord"]["welcome_room"]), 
+        headers={'Authorization': 'Bot {}'.format(config["discord"]["private"])},
+        json={'max_uses': 1, 'unique': True, 'max_age': 300}
     )
     i = resp.json()
-    print("Generated new invite!")
+    # error handling for invite creation
+    if (i.get('code')):
+        print("Generated new invite!")
+    else:
+        print(i)
     return i["code"]
 
 app = Flask(__name__)
