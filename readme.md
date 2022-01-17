@@ -47,7 +47,7 @@ Light theme default        |  Dark theme default
 A folder called `f1rewall-master` with the source code has been created!
 
 ### 1. Creating the bot
-0. Got to the Discord Developer Portal to create your bot.
+0. Go to the Discord Developer Portal to create your bot.
 https://discord.com/developers/applications
 1. Press "New Application" in the top right corner
 2. Set a name, this can be anything (will be seen by server members)
