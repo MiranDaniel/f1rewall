@@ -1,3 +1,6 @@
 *venv*
 *pycache*
 *VS*
+.idea/*
+data/dat.p
+config.yaml
