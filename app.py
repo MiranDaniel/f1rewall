@@ -9,6 +9,7 @@ from flask import Flask, render_template, request, redirect
 import yaml
 import requests
 from pro import Pro
+import threading
 
 with open("config.yaml", "r") as stream:
     try:
@@ -98,6 +99,7 @@ catpcha_theme = "dark" if config["dark_theme"] else "light"
 
 @app.route("/")  # main function
 def index():
+    threading.Thread(target=pro.visit).start()
     key = request.args.get('key')  # get key parameter from URL
     if key:  # if key set
         r = recaptcha(key)  # confirm captcha
@@ -117,4 +119,4 @@ def index():
 
 @app.route("/admin/stats")
 def _stats():
-    return render_template("templates/admin/stats.html")
+    return render_template("admin/stats.html", data=pro.out())
