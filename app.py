@@ -102,12 +102,17 @@ def invite():
 theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
 border = "border-dark" if config["dark_theme"] else ""
 catpcha_theme = "dark" if config["dark_theme"] else "light"
+main_theme = config["theme"]
+if main_theme == "default":
+    main_theme == "index"
+main_theme = main_theme+".html"
 
 
 @app.route("/")  # main function
 @limiter.limit("10 per second")
 def index():
-    threading.Thread(target=pro.visit).start()
+    if pro_enabled:
+        threading.Thread(target=pro.visit).start()
     key = request.args.get('key')  # get key parameter from URL
     if key:  # if key set
         r = recaptcha(key)  # confirm captcha
@@ -119,10 +124,10 @@ def index():
         else:  # if captcha invalid
             print(f"Recaptcha {key[:30]} failed!")
             # return error page
-            return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme)
+            return render_template(main_theme, public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme)
     # if not key
     # return normal page
-    return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)
+    return render_template(main_theme, public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)
 
 
 @app.route("/admin/")

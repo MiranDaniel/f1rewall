@@ -7,6 +7,8 @@
 # false for light theme
 # true  for dark  theme
 dark_theme: true
+theme: "default"
+pro: false
 
 recaptcha:
   # put your public recaptcha key here!
