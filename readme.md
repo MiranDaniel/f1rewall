@@ -1,4 +1,5 @@
-# f1rewall
+# f1rewall pro
+
 *The sleek, simple and scalable invite gateway for your Discord community*
 
 ---
@@ -14,14 +15,11 @@
 
 ---
 
-
 F1rewall is a Discord invite gateway. It lets you easily route your Discord server invites through a controlled page with a captcha.
 It generates a unique, time limited one time invite for every user.
 Thanks to this, you can stop most bots from entering your server.
 
-
 ---
-
 
 Light theme default        |  Dark theme default
 :-------------------------:|:-------------------------:
@@ -31,7 +29,7 @@ Light theme default        |  Dark theme default
 
 ---
 
-## Setup guide:
+## Setup guide
 
 **It is recommended to let your team's developer/sysadmin set this up.**
 
@@ -39,16 +37,15 @@ Light theme default        |  Dark theme default
 
 *The page is made to be easily editable by anyone with HTML/CSS/Bootstrap experience*
 
-
-
 ### 0. Getting the code
 
 1. run `git clone https://github.com/MiranDaniel/f1rewall`
 A folder called `f1rewall-master` with the source code has been created!
 
 ### 1. Creating the bot
+
 0. Go to the Discord Developer Portal to create your bot.
-https://discord.com/developers/applications
+<https://discord.com/developers/applications>
 1. Press "New Application" in the top right corner
 2. Set a name, this can be anything (will be seen by server members)
 3. Once created, click on your app in the app manager.
@@ -58,7 +55,7 @@ https://discord.com/developers/applications
 7. Copy the token ***(MAKE SURE NOT TO LEAK THIS)***
 8. Paste your token in the config.yaml file, follow the instructions in it
 9. Go back to the **General information** section and copy the app ID
-10. Insert your ID here -> https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=1
+10. Insert your ID here -> <https://discord.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=1>
 11. Visit the link and add the bot!
 
 Congrats! Your bot is now ready!
@@ -75,7 +72,7 @@ Congrats! Your bot is now configured!
 
 ### 3. Setting up ReCaptcha
 
-1. Go to https://www.google.com/recaptcha/admin/create
+1. Go to <https://www.google.com/recaptcha/admin/create>
 2. Set a name for your app
 3. Select "reCAPTCHA v2"
 4. Add your domain
@@ -108,7 +105,7 @@ If you get the `make: command not found` error, run `sudo apt-get install build-
 Remember to set a static IP and host on port 80.
 If you want to stop the Apache server from running on port 80, use `sudo systemctl stop apache2`
 
-Follow this guide to redirect your chat.<>.<> domain to your chat gateway. https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/
+Follow this guide to redirect your chat.<>.<> domain to your chat gateway. <https://www.namecheap.com/support/knowledgebase/article.aspx/9776/2237/how-to-create-a-subdomain-for-my-domain/>
 
 You can also use the CloudFlare Argo Tunnel.
 
@@ -132,7 +129,7 @@ Read the documentation file in `docs/customisation.md`
 
 If you're having issues with the app please open an issue or discussion thread.
 
-Private support can be provided. Find the contact information on https://mirandaniel.com/
+Private support can be provided. Find the contact information on <https://mirandaniel.com/>
 
 ## Donations <3
 
@@ -144,6 +141,7 @@ Private support can be provided. Find the contact information on https://miranda
 * Nano: `nano_33k5ggoycqgft9on81kd8sqkdi4c38robs4jq9xmbd6j1wgfmqbukqym38ug`
 
 ## License - MIT
+
 <img src="https://opensource.org/files/OSIApproved_1.png" width="100"/>
 
 ```

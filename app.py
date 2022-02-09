@@ -10,6 +10,15 @@ import yaml
 import requests
 from pro import Pro
 import threading
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+
+app = Flask(__name__)
+limiter = Limiter(
+    app,
+    key_func=get_remote_address,
+    default_limits=["10 per second"]
+)
 
 with open("config.yaml", "r") as stream:
     try:
@@ -90,14 +99,13 @@ def invite():
     return i["code"]
 
 
-app = Flask(__name__)
-
 theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
 border = "border-dark" if config["dark_theme"] else ""
 catpcha_theme = "dark" if config["dark_theme"] else "light"
 
 
 @app.route("/")  # main function
+@limiter.limit("10 per second")
 def index():
     threading.Thread(target=pro.visit).start()
     key = request.args.get('key')  # get key parameter from URL
@@ -117,6 +125,14 @@ def index():
     return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)
 
 
-@app.route("/admin/stats")
-def _stats():
-    return render_template("admin/stats.html", data=pro.out())
+@app.route("/admin/")
+@app.route("/admin/login")
+@limiter.limit("2 per second")
+def _login():
+    return render_template("admin/login.html", public=config["recaptcha"]["public"])
+
+
+@app.route("/api/login", methods=["POST"])
+@limiter.limit("6 per minute")
+def api_login():
+    return "ok"

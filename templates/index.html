@@ -5,6 +5,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy of 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -50,9 +51,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
         }
+
         .logo {
             -webkit-filter: drop-shadow(12px 12px 7px rgba(0, 0, 0, 0.5));
         }
+
         @media only screen and (max-width: 600px) {
             .body {
                 margin: 0;
@@ -62,6 +65,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 transform: translate(-50%, -50%);
             }
         }
+
         @media only screen and (min-width: 600px) {
             .body {
                 margin: 0;
@@ -79,7 +83,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         <header class="container">
             <div class="row">
                 <div class="col">
-                    <img class="mw-100 logo mx-auto d-block pt-3 logo" src="{{url_for('static', filename='wordmark.png')}}" alt="">
+                    <img class="mw-100 logo mx-auto d-block pt-3 logo"
+                        src="{{url_for('static', filename='wordmark.png')}}" alt="">
                 </div>
             </div>
         </header>
@@ -94,7 +99,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 </div>
                 <div class="row">
                     <form action="?" method="POST" class="f">
-                        <div data-callback="alertSuccess" data-theme="{{catpcha_theme}}" class="g-recaptcha" data-sitekey="{{public}}"></div>
+                        <div data-callback="alertSuccess" data-theme="{{catpcha_theme}}" class="g-recaptcha"
+                            data-sitekey="{{public}}"></div>
                     </form>
                 </div>
                 <div class="row">
@@ -105,19 +111,20 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     </div>
 </body>
 <script>
-    console.log("Copyright 2021 MiranDaniel");
+    console.log("Copyright 2021-2022 MiranDaniel");
     console.log("Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files(the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and / or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:");
     console.log("The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.")
     console.log("THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.")
 </script>
 <script>
-function alertSuccess(){
-    window.history.replaceState(null, null, window.location.pathname);
-    let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
+    function alertSuccess() {
+        window.history.replaceState(null, null, window.location.pathname);
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
 
-    params.set('key', grecaptcha.getResponse());
-    window.location.href = url+"?"+params.toString(); 
-}
+        params.set('key', grecaptcha.getResponse());
+        window.location.href = url + "?" + params.toString();
+    }
 </script>
+
 </html>

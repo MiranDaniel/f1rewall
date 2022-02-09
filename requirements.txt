@@ -3,3 +3,4 @@ requests
 gevent
 pyyaml
 arrow
+flask_limiter
