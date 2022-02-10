@@ -30,4 +30,5 @@ if os.path.exists("theme.yaml"):
             quit(1)
 else:
     with open("theme.yaml", "wt+") as w:
+        w.write("# this is a configuration file for the frontend look\n")
         yaml.dump(conf[selected], w)
