@@ -82,21 +82,24 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <body class="text-light">
     <div class="body" style="width: 100%;">
-        <div class="mx-auto b" style="width:max-content;">
-            <div class="px-5 py-5">
-                <p class="mb-0"><span style="color: greenyellow;">user@{{server}}</span>:<span
-                        style="color: blueviolet;">~</span>$
-                    <span id="demo"></span>
-                </p>
-                <p class="my-0 hidden" style="width: 100%;" id="plsSolve">Please solve captcha to continue</p>
-                <form action="?" method="POST" class="f my-0 hidden" id="cap">
-                    <div data-callback="alertSuccess" data-theme="{{catpcha_theme}}" class="g-recaptcha"
-                        data-sitekey="{{public}}">
-                    </div>
-                </form>
-                <p id="1" class="hidden">User authorized</p>
-                <p id="2" class="hidden">Creating invite</p>
-                <p id="3" class="hidden">Redirecting user</p>
+        <div class="mx-3">
+            <div class="mx-auto b" style="width:max-content; max-width: 100%;">
+                <div class="px-4 py-4">
+                    <p class="mb-0"><span style="color: greenyellow;">user@{{server}}</span>:<span
+                            style="color: blueviolet;">~</span>$
+                        <span id="demo"></span>
+                    </p>
+                    <p class="my-0"><strong>{{"Invalid captcha, try again" if failed else ""}}</strong></p>
+                    <p class="my-0 hidden" style="width: 100%;" id="plsSolve">Please solve captcha to continue</p>
+                    <form action="?" method="POST" class="f my-0 hidden" id="cap">
+                        <div data-callback="alertSuccess" data-theme="{{catpcha_theme}}" class="g-recaptcha"
+                            data-sitekey="{{public}}">
+                        </div>
+                    </form>
+                    <p id="1" class="hidden">User authorized</p>
+                    <p id="2" class="hidden">Creating invite</p>
+                    <p id="3" class="hidden">Redirecting user</p>
+                </div>
             </div>
         </div>
     </div>

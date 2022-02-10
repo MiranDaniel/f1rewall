@@ -56,7 +56,15 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 position: absolute;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -50%);
+                transform: translate(-50%, -80%);
+            }
+
+            .logodiv {
+                display: none;
+            }
+
+            .logomobilediv {
+                display: block;
             }
         }
 
@@ -67,6 +75,14 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -80%);
+            }
+
+            .logodiv {
+                display: block;
+            }
+
+            .logomobilediv {
+                display: none;
             }
         }
 
@@ -79,6 +95,11 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 <body class="text-center text-light">
     <div class="body" style="width: 100%;">
+        <div class="col-md-auto mb-3 logomobilediv">
+            <img class="mw-100 logo mx-auto my-auto d-block pt-3 logo" style="margin-left: auto; display: block;"
+                src="{{url_for('static', filename='wordmark.png')}}" alt="">
+            <br>
+        </div>
         <div class="background">
             <div class="container">
                 <div class="row justify-content-center">
@@ -90,13 +111,13 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             </div>
                         </form>
                     </div>
-                    <div class="col-md-auto mt-3">
+                    <div class="col-md-auto mt-3 logodiv">
                         <img class="mw-100 logo mx-auto my-auto d-block pt-3 logo"
-                            style="margin-left: auto; display: block;" src="https://via.placeholder.com/150" alt="">
+                            style="margin-left: auto; display: block;"
+                            src="{{url_for('static', filename='wordmark.png')}}" alt="">
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>

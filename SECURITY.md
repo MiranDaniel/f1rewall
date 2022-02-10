@@ -4,6 +4,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
+| 1.0.2   | :white_check_mark: |
+| 1.0.1   | :white_check_mark: |
 | 1.0.0   | :white_check_mark: |
 | < 0.0   | :x:                |
 
@@ -11,4 +13,4 @@
 
 If you find a vulnerability please contact the maintainer at
 
-`me@mirandaniel.com`, `mirandaniel#3515` or `@mirandaniel:matrix.org`
+`me@mirandaniel.com`, `mirandaniel#3515`
