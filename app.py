@@ -13,6 +13,8 @@ import threading
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 
+import src
+
 app = Flask(__name__)
 limiter = Limiter(
     app,
@@ -20,59 +22,29 @@ limiter = Limiter(
     default_limits=["10 per second"]
 )
 
-with open("config.yaml", "r") as stream:
-    try:
-        config = yaml.safe_load(stream)
-    except yaml.YAMLError as exc:
-        print(exc)
-        quit(1)
+src.configMan.check()
 
 
-if "dark_theme" not in config:
-    print("!! Theme not defined")
-if "recaptcha" in config:
-    if config["recaptcha"]["public"] == None:
-        print("!! Recaptcha public key is not defined, exiting")
-        quit(1)
-    if config["recaptcha"]["private"] == None:
-        print("!! Recaptcha private key is not defined, exiting")
-        quit(1)
-else:
-    print("!! Recaptcha config doesnt exist, exiting")
-    quit(1)
-
-if "discord" in config:
-    if config["discord"]["welcome_room"] == None:
-        print("!! Discord welcome room not defined, exiting")
-        quit(1)
-    if config["discord"]["private"] == None:
-        print("!! Discord private key is not defined, exiting")
-        quit(1)
-else:
-    print("!! Discord config doesnt exist, exiting")
-    quit(1)
-
-if "server" in config:
-    if config["server"]["port"] == None:
-        print("!! Server port not defined, exiting")
-        quit(1)
-else:
-    print("!! Sever config not defined, exiting")
-    quit(1)
-
-if "pro" in config:
-    pro_enabled = config["pro"]
-else:
-    pro_enabled = False
-
+pro_enabled = src.configMan.hasPro()
 pro = Pro(enabled=pro_enabled)
+
+pubkeys = src.configMan.getPubkeys()
+privkeys = src.configMan.getPrivKeys()
+
+welcome_room = src.configMan.getWelcomeRoom()
+
+theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
+border = "border-dark" if config["dark_theme"] else ""
+catpcha_theme = "dark" if config["dark_theme"] else "light"
+main_theme = config["theme"]
+main_theme = main_theme+".html"
 
 
 def recaptcha(token):
-    print(f"Verifying recaptcha {token[:15]}")
+    print(f"Verifying recaptcha ...{token[:15]}...")
     recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
     payload = {
-        'secret': config["recaptcha"]["private"],
+        'secret': privkeys["recaptcha"],
         'response': token,
         'remoteip': request.remote_addr,
     }
@@ -85,9 +57,9 @@ def invite():
     print("Generating new invite!")
     resp = requests.post(
         'https://discordapp.com/api/channels/{}/invites'.format(
-            config["discord"]["welcome_room"]),
+            welcome_room),
         headers={'Authorization': 'Bot {}'.format(
-            config["discord"]["private"])},
+            privkeys["discord"])},
         json={'max_uses': 1, 'unique': True, 'max_age': 300}
     )
     i = resp.json()
@@ -97,13 +69,6 @@ def invite():
     else:
         print(i)
     return i["code"]
-
-
-theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
-border = "border-dark" if config["dark_theme"] else ""
-catpcha_theme = "dark" if config["dark_theme"] else "light"
-main_theme = config["theme"]
-main_theme = main_theme+".html"
 
 
 @app.route("/")  # main function
@@ -122,17 +87,17 @@ def index():
         else:  # if captcha invalid
             print(f"Recaptcha {key[:30]} failed!")
             # return error page
-            return render_template(main_theme, public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
+            return render_template(main_theme, public=pubkeys["recaptcha"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
     # if not key
     # return normal page
-    return render_template(main_theme, public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
+    return render_template(main_theme, public=pubkeys["recaptcha"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
 
 
 @app.route("/admin/")
 @app.route("/admin/login")
 @limiter.limit("2 per second")
 def _login():
-    return render_template("admin/login.html", public=config["recaptcha"]["public"])
+    return render_template("admin/login.html")
 
 
 @app.route("/api/login", methods=["POST"])

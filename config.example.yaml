@@ -4,10 +4,17 @@
 #
 
 
-# false for light theme
-# true  for dark  theme
-dark_theme: true
+# sets the website theme
+# available options: default, material, terminal
+# add more or edit themes in ./templates/
+# setting a theme will also genearte a theme.yaml configuration file
 theme: "default"
+
+# the pro version of f1rewall enables advanced analytics
+# and a web dashboard for administration
+# this may increase resource usage but will not impact performance
+# this feature is fully opensource, please consider donating 
+# if you are planning on using it | donate.md for more info
 pro: false
 
 recaptcha:
