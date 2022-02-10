@@ -103,8 +103,6 @@ theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-
 border = "border-dark" if config["dark_theme"] else ""
 catpcha_theme = "dark" if config["dark_theme"] else "light"
 main_theme = config["theme"]
-if main_theme == "default":
-    main_theme == "index"
 main_theme = main_theme+".html"
 
 
@@ -124,10 +122,10 @@ def index():
         else:  # if captcha invalid
             print(f"Recaptcha {key[:30]} failed!")
             # return error page
-            return render_template(main_theme, public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme)
+            return render_template(main_theme, public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
     # if not key
     # return normal page
-    return render_template(main_theme, public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme)
+    return render_template(main_theme, public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
 
 
 @app.route("/admin/")
