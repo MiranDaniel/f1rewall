@@ -61,3 +61,11 @@ def getPrivKeys():
 
 def getWelcomeRoom():
     return config["discord"]["welcome_room"]
+
+
+def getServerName():
+    return config["discord"]["server_name"]
+
+
+def getTheme():
+    return config["theme"]

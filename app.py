@@ -32,10 +32,11 @@ pubkeys = src.configMan.getPubkeys()
 privkeys = src.configMan.getPrivKeys()
 
 welcome_room = src.configMan.getWelcomeRoom()
+server_name = src.configMan.getServerName()
 
-theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
-border = "border-dark" if config["dark_theme"] else ""
-catpcha_theme = "dark" if config["dark_theme"] else "light"
+#theme = "text-dark border-dark" if config["dark_theme"] else "text-light border-light"
+#border = "border-dark" if config["dark_theme"] else ""
+#catpcha_theme = "dark" if config["dark_theme"] else "light"
 main_theme = config["theme"]
 main_theme = main_theme+".html"
 
@@ -87,10 +88,10 @@ def index():
         else:  # if captcha invalid
             print(f"Recaptcha {key[:30]} failed!")
             # return error page
-            return render_template(main_theme, public=pubkeys["recaptcha"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
+            return render_template(main_theme, public=pubkeys["recaptcha"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme, server=server_name)
     # if not key
     # return normal page
-    return render_template(main_theme, public=pubkeys["recaptcha"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme, server=config["discord"]["server_name"])
+    return render_template(main_theme, public=pubkeys["recaptcha"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme, server=server_name)
 
 
 @app.route("/admin/")

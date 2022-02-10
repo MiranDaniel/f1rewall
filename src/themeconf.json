@@ -1,0 +1,11 @@
+{
+    "default": {
+        "dark": "tf"
+    },
+    "material": {
+        "fallback_background": "0x",
+        "gradient": "gradient",
+        "neon": "rgb"
+    },
+    "terminal": {}
+}
