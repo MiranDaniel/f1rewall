@@ -1,0 +1,114 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <style>
+        code {
+            color: black !important;
+        }
+
+        .hrsmall {
+            padding: 0;
+            margin-top: 3px;
+            margin-bottom: 3px;
+        }
+
+        main div div .col-md {
+            margin: 2px;
+        }
+
+        footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            opacity: 0.7;
+        }
+
+        footer:hover {
+            opacity: 1;
+        }
+
+        footer small img {
+            height: auto;
+            width: 14px;
+        }
+
+        .notsure {
+            opacity: 0.66;
+        }
+
+        .notsure:hover {
+            opacity: 1;
+        }
+
+        .text-danger a {
+            color: #c93040;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header class="bg-dark text-light text-center mx-auto">
+        <nav class="navbar navbar-dark mx-2">
+            <a class="navbar-brand" href="#">
+                <img src="https://cdn.discordapp.com/attachments/921927247349305364/942517715145482240/F1rewall_Logo_Flames.png"
+                    width="30" height="30" class="d-inline-block align-top" alt="">
+                f1rewall administrator panel
+            </a>
+        </nav>
+    </header>
+    <main>
+        <div class="container mt-3">
+            <div class="row">
+                <div class="col">
+                    <p class="mb-0">Welcome to the f1rewall administrator panel. You can view the f1rewall analytics,
+                        configuration
+                        and health here.</p>
+                    <p class="text-danger"><i class="bi bi-exclamation-triangle"></i> This page is public and not
+                        access resticted. Anyone can view this page. Want to change this? <a href="">Read
+                            documentation</a> &middot; <a href="">Hide warning</a></p>
+                    <small class="my-0 notsure">Not sure what f1rewall is? <a href="">Learn more</a></small>
+                </div>
+            </div>
+        </div>
+        <div class="container mt-3">
+            <div class="row mx-2">
+                <div class="col-md text-center border border-rounded my-1">
+                    <h4 class="my-0">Website visits today</h4>
+                    <hr class="hrsmall">
+                    <code class="my-0 h5">123456</code>
+                </div>
+                <div class="col-md text-center border border-rounded my-1">
+                    <h4 class="my-0">Invites generated today</h4>
+                    <hr class="hrsmall">
+                    <code class="my-0 h5">123456</code>
+                </div>
+                <div class="col-md text-center border border-rounded my-1">
+                    <h4 class="my-0">Website visits total</h4>
+                    <hr class="hrsmall">
+                    <code class="my-0 h5">123456</code>
+                </div>
+                <div class="col-md text-center border border-rounded my-1">
+                    <h4 class="my-0">Invites generated total</h4>
+                    <hr class="hrsmall">
+                    <code class="my-0 h5">123456</code>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="text-center mx-auto">
+        <small><i class="bi bi-exclamation-triangle"></i> f1rewall is a free and opensource tool, please consider <a
+                href="">donating</a> to support the
+            development <i class="bi bi-heart-fill"></i></small>
+    </footer>
+</body>
+
+</html>
