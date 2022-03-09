@@ -2,3 +2,4 @@ flask
 PyYAML
 blessed
 pwinput
+requests

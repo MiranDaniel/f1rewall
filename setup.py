@@ -42,7 +42,7 @@ def interactive_config():
             conf.captcha = "recaptcha"
             break
         elif i.lower() == "h":
-            conf.captcha = "hcatpcha"
+            conf.captcha = "hcaptcha"
             break
         else:
             print("Invalid option")
@@ -56,6 +56,10 @@ def interactive_config():
     print("Input your Discord bot token: ")
     i = pwinput(mask="*", prompt="")
     conf.discord_token = i
+
+    print("Input your Discord welcome room ID")
+    i = input("-- ")
+    conf.discord_welcome_room = i
 
     while conf.analytics == Configuration.Default.analytics:
         print("Would you like to enable f1rewall analytics? Y/N")

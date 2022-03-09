@@ -104,7 +104,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                             <div data-callback="alertSuccess" data-theme="{{args["theme"]}}" class="g-recaptcha" data-sitekey="{{public}}"></div>
                         </form>
                     {% elif captcha == "hcaptcha" %}
-                        <div class="h-captcha" data-sitekey="your_site_key"></div>
+                        <div data-callback="alertSuccess" class="h-captcha" data-sitekey="{{ public }}"></div>
                     {% else %}
                         <p>Invalid captcha setting, please contact admin</p>
                     {% endif %}
@@ -126,10 +126,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 function alertSuccess(){
     window.history.replaceState(null, null, window.location.pathname);
     let url = new URL(window.location.href);
-    let params = new URLSearchParams(url.search);
 
-    params.set('key', grecaptcha.getResponse());
-    window.location.href = url+"?"+params.toString();
+
+    window.location.href = url+"/verify/"+grecaptcha.getResponse();
 }
 </script>
 </html>

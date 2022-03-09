@@ -8,6 +8,7 @@ class Configuration:
         captcha_private = "your captcha private key"
         discord_token = "your discord token"
         analytics = "false/true"
+        discord_welcome_room = 0
         args = {
             "You can put additional settings here": "Read the documentation for more information"
         }
@@ -21,6 +22,7 @@ class Configuration:
         self.captcha_private = Configuration.Default.captcha_private
         self.discord_token = Configuration.Default.discord_token
         self.analytics = Configuration.Default.analytics
+        self.discord_welcome_room = Configuration.Default.discord_welcome_room
         self.args = Configuration.Default.args
         self.kwargs = Configuration.Default.kwargs
 
