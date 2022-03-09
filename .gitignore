@@ -1,0 +1,7 @@
+venv
+venv/
+
+.ENV
+.env
+
+config.yaml
