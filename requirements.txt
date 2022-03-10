@@ -3,3 +3,4 @@ PyYAML
 blessed
 pwinput
 requests
+py-bcrypt

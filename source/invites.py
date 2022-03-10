@@ -12,11 +12,11 @@ class InvitePool:
         self.pool = [
 
         ]
-        self.poolSize = 3 # amount of invites to keep in memory
-        self.poolSizeLimit = 25 # max invites to be scaled to
+        self.poolSize = 3  # amount of invites to keep in memory
+        self.poolSizeLimit = 25  # max invites to be scaled to
 
         self.inviteSize = 1
-        self.inviteSizeLimit = 3 # higher number = more invites/minute at the cost of security
+        self.inviteSizeLimit = 3  # higher number = more invites/minute at the cost of security
 
         self.poolSizeDefault = self.poolSize
 
@@ -62,7 +62,7 @@ class InvitePool:
             threading.Thread(target=self.fill).start()
         if len(self.pool) == 0:
             self.poolSize += 1 if self.poolSize < self.poolSizeLimit + 1 else 0
-            self.inviteSize += 1 if self.inviteSize < self.inviteSizeLimit+1 else 0
+            self.inviteSize += 1 if self.inviteSize < self.inviteSizeLimit + 1 else 0
             print("::InvitePool::  " + term.green(f"Inflating invite pool to {self.poolSize}"))
             print("::InvitePool::  " + term.green(f"Inflating invite size to {self.inviteSize}"))
         else:

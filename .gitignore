@@ -5,6 +5,7 @@ venv/
 .env
 
 config.yaml
+users.yaml
 
 __pycache__
 __pycache__/

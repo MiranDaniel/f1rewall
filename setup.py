@@ -3,6 +3,7 @@ import os
 from blessed import Terminal
 from pwinput import pwinput
 from source.conf import Configuration
+from source import conf
 from source.decorators import catch_goodbye
 from source.utils import goodbye
 
@@ -78,12 +79,58 @@ def interactive_config():
 
 
 @catch_goodbye()
+def manage_users():
+    users = conf.load_users()
+    print(term.gray100("  What would you like to do?"))
+    print("   1. List users")
+    print("   2. Add new user")
+    print("   3. Remove user")
+    print("   0. Exit")
+
+    i = input("\n-- ")
+    try:
+        i = int(i)
+    except ValueError:
+        manage_users()
+
+    if i == 1:
+        print(f"There are {len(users.users)} registered users")
+        print("index | username | password")
+        for index, user in enumerate(users.users):
+            print(f"[{index}] | {user.username} | {user.password}")
+        print()
+        manage_users()
+    elif i == 2:
+        print("Enter username: ")
+        username = input()
+        print("Enter password: ")
+        password = pwinput(mask="*", prompt="")
+        users.add_user(username, password)
+        conf.save_users(users)
+        print()
+        manage_users()
+    elif i == 3:
+        print("Enter username: ")
+        username = input()
+        users.remove_user(username)
+        conf.save_users(users)
+        print()
+        manage_users()
+    elif i == 0:
+        goodbye()
+        quit(0)
+    else:
+        manage_users()
+
+
+@catch_goodbye()
 def welcome():
     print(term.home + term.clear + term.move_y(0))
     print(term.black_on_orange(' Welcome to f1rewall setup!' + " " * (term.width - 28)))
     print(term.gray100("  What would you like to do?"))
     print("   1. Generate settings file (manual setup)")
     print("   2. Run interactive setup " + term.green("[recommended]"))
+    print("   3. Manage users (f1rewall analytics access)")
     print("   0. Exit")
 
     i = input("\n-- ")
@@ -96,6 +143,8 @@ def welcome():
         generate_config()
     elif i == 2:
         interactive_config()
+    elif i == 3:
+        manage_users()
     elif i == 0:
         goodbye()
         quit(0)

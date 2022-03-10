@@ -20,7 +20,7 @@ ip.fill()
 
 
 @gateway.route('/')
-def gateway_fun(code=""):
+def gateway_fun():
     return render_template(
         "index.jinja2",
         captcha=configuration.captcha,
@@ -58,4 +58,4 @@ def verify_fun(code=""):
             print("Ratelimit")
             return redirect("/")
 
-        return invite["code"]#redirect(f"https://discord.gg/{invite['code']}")
+        return redirect(f"https://discord.gg/{invite['code']}")
