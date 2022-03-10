@@ -9,7 +9,7 @@ Still under development, do not use, feel free to contribute :)
 
 ---
 
-Version: `2.0.0-alpha.1`
+Version: `2.0.0-alpha.2`
 
 ---
 
