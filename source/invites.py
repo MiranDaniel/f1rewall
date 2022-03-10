@@ -21,7 +21,7 @@ class InvitePool:
         self.poolSizeDefault = self.poolSize
 
     def debug(self):
-        return  # disable debug mode
+        #return  # disable debug mode
 
         print("::InvitePool::DEBUG::  " + str(self.pool))
 

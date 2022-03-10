@@ -1,21 +1,3 @@
-# f1rewall
-The opensource Discord invite gateway for your community!
-
----
-
-This branch hosts the f1rewall 2.0 version. 
-Still under development, do not use, feel free to contribute :)
-
-
----
-
-Version: `2.0.0-alpha.1`
-
----
-
-## License
-
-```text
 Copyright 2021-2022 MiranDaniel
 
 
@@ -51,4 +33,5 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT
 OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH
 THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-```
+
+

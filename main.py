@@ -1,6 +1,13 @@
+
+#
+# Version 2.0.0-alpha.1
+#
+
+
 from flask import Flask
 
 from blueprints import gate
+from blueprints import dash
 
 from source import utils
 
@@ -17,6 +24,7 @@ configuration = conf.load_conf()
 
 app = Flask(__name__)
 app.register_blueprint(gate.gateway)
+app.register_blueprint(dash.dashboard)
 
 
 @catch_goodbye()
