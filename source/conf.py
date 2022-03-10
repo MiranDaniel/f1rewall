@@ -1,3 +1,5 @@
+import hashlib
+
 import bcrypt
 import yaml
 import os
@@ -64,6 +66,28 @@ class Users:
 
         return bcrypt.checkpw(password, match.password)
 
+    def out_key(self, username):
+        match = [i for i in self.users if i.username == username]
+
+        if len(match) < 1:
+            return False
+
+        match = match[0]
+        result = match.username + match.password
+        sha256 = hashlib.sha256()
+        sha256.update(result.encode("utf-8"))
+
+        return sha256.hexdigest()
+
+    def check_cookie(self, h):
+        keys = []
+        for i in self.users:
+            keys.append((self.out_key(i.username), i))
+
+        if h in [i[0] for i in keys]:
+            return True
+        else:
+            return False
 
 def load_conf():
     with open("config.yaml", "rt") as f:
