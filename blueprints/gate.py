@@ -1,6 +1,6 @@
 import multiprocessing
 
-from flask import Blueprint, render_template, abort, request
+from flask import Blueprint, render_template, abort, request, redirect
 from source import conf
 from source import utils
 from source import captcha
@@ -20,7 +20,7 @@ ip.fill()
 
 
 @gateway.route('/')
-def gateway_fun():
+def gateway_fun(code=""):
     return render_template(
         "index.jinja2",
         captcha=configuration.captcha,
@@ -56,6 +56,6 @@ def verify_fun(code=""):
 
         if "code" not in invite:
             print("Ratelimit")
-            return abort(429)
+            return redirect("/")
 
-        return str(invite["code"])
+        return invite["code"]#redirect(f"https://discord.gg/{invite['code']}")

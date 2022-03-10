@@ -2,26 +2,31 @@ import time
 
 import requests
 from source import utils, conf
+from blessed import Terminal
 
 utils.check_os()
 utils.check_setup()
 
+
+term = Terminal()
+
+
 configuration = conf.load_conf()
 
 
-def invite():
-    print("Generating new invite!")
+def invite(size=1):
+    print("::InvitePool::  "+term.reverse(term.green4("Generating new invite!")))
     resp = requests.post(
         'https://discordapp.com/api/channels/{}/invites'.format(configuration.discord_welcome_room),
         headers={'Authorization': 'Bot {}'.format(configuration.discord_token)},
-        json={'max_uses': 1, 'unique': True, 'max_age': 300}
+        json={'max_uses': size, 'unique': True, 'max_age': 300}
     )
     i = resp.json()
     if i.get('code'):
-        print("Generated new invite!")
+        print("::InvitePool::  "+term.reverse(term.green(f"Generated new invite! {i['code']}")))
     else:
-        print(f"Sleeping for {i.get('retry_after')}")
+        print("::InvitePool::  "+term.reverse(term.red(f"Sleeping for {i.get('retry_after')}")))
         time.sleep(i.get("retry_after")/2)
-        return invite()
+        return None
 
     return i["code"]
