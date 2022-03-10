@@ -4,3 +4,4 @@ blessed
 pwinput
 requests
 py-bcrypt
+Flask-Session
