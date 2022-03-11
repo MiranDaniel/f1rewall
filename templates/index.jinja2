@@ -99,9 +99,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                     </div>
                 </div>
                 <div class="row">
-                    {% if captcha == "recaptcha"%}
+                    {% if captcha == "recaptcha" %}
                         <form action="?" method="POST" class="f">
-                            <div data-callback="alertSuccess" data-theme="{{args["theme"]}}" class="g-recaptcha" data-sitekey="{{public}}"></div>
+                            <div data-callback="alertSuccess" data-theme="{{ args["theme"] }}" class="g-recaptcha"
+                                 data-sitekey="{{ public }}"></div>
                         </form>
                     {% elif captcha == "hcaptcha" %}
                         <div data-callback="alertSuccess" class="h-captcha" data-sitekey="{{ public }}"></div>
