@@ -1,9 +1,10 @@
 import json
+import urllib.parse
+
+import requests
 
 from source import conf
 from source import utils
-import requests
-import urllib.parse
 
 utils.check_os()
 utils.check_setup()

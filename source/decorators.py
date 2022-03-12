@@ -1,5 +1,6 @@
-from .utils import goodbye
 import sys
+
+from .utils import goodbye
 
 
 def catch_goodbye():

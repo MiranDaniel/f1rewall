@@ -1,8 +1,8 @@
 import hashlib
+import os
 
 import bcrypt
 import yaml
-import os
 
 
 class Configuration:

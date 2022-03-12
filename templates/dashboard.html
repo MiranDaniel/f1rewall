@@ -40,6 +40,14 @@
             }
         }
 
+        .square {
+            aspect-ratio: 1/1;
+        }
+
+        .inner-square {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 
@@ -58,45 +66,53 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Home</a>
+                    <a class="nav-link active" aria-current="page" href="/admin/dash/"><i class="bi bi-house"></i> Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-bar-chart-line"></i> User Analytics</a>
+                    <a class="nav-link" href="/admin/dash/analytics"><i class="bi bi-bar-chart-line"></i> User Analytics</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-activity"></i> Health</a>
+                    <a class="nav-link" href="/admin/dash/health"><i class="bi bi-activity"></i> Health</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-gear"></i> Configuration</a>
+                    <a class="nav-link" href="/admin/dash/configuration"><i class="bi bi-gear"></i> Configuration</a>
                 </li>
                 <span class="navbar-text">
-                    <span content="nav-div"><hr class="nav-div-hr">
-                        <span class="nav-div-span"></span>
-                    </span>
-                </span>
+                            <span content="nav-div"><hr class="nav-div-hr">
+                                <span class="nav-div-span"></span>
+                            </span>
+                        </span>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-files"></i> Documentation</a>
+                    <a class="nav-link" href="/admin/dash/documentation"><i class="bi bi-files"></i> Documentation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-bug"></i> Report bug</a>
+                    <a class="nav-link" href="/admin/dash/reportbug"><i class="bi bi-bug"></i> Report bug</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#"><i class="bi bi-file-text"></i> Legal</a>
+                    <a class="nav-link" href="/admin/dash/legal"><i class="bi bi-file-text"></i> Legal</a>
                 </li>
             </ul>
             <span class="navbar-text">
-                    <span content="nav-div"><hr class="nav-div-hr">
-                    </span>
-                </span>
+                            <span content="nav-div"><hr class="nav-div-hr">
+                            </span>
+                        </span>
             <ul class="navbar-nav ml-auto">
-                <span class="navbar-text text-center"><i class="bi bi-person-circle"></i> Logged in as <span
-                        class="text-light navbar-text">{{ args["user"]["username"] }}</span></span>
-                <button type="button" class="btn btn-outline-light btn-sm mx-2 py-0"><i
+                        <span class="navbar-text text-center"><i class="bi bi-person-circle"></i> Logged in as <span
+                                class="text-light navbar-text">{{ args["user"]["username"] }}</span></span>
+                <button onclick="window.location.href='/admin/logout'" type="button"
+                        class="btn btn-outline-light btn-sm mx-2 py-0"><i
                         class="bi bi-box-arrow-in-right"></i> &nbsp;Log out
                 </button>
             </ul>
         </div>
     </div>
 </nav>
+<main>
+    {% if args["path"] in ["home", "", None] %}
+        {% include "home.jinja2" %}
+        {% elif args["path"] == "analytics" %}
+        {% include "analytics.jinja2" %}
+    {% endif %}
+</main>
 </body>
 </html>

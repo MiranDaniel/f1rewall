@@ -1,12 +1,12 @@
 import multiprocessing
+import threading
 
 from flask import Blueprint, render_template, abort, request, redirect
-from source import conf
-from source import utils
-from source import captcha
-from source import invites
 
-import threading
+from source import captcha
+from source import conf
+from source import invites
+from source import utils
 
 utils.check_os()
 utils.check_setup()
@@ -16,7 +16,7 @@ gateway = Blueprint('gateway', __name__,
 
 configuration = conf.load_conf()
 ip = invites.InvitePool()
-ip.fill()
+#ip.fill()
 
 
 @gateway.route('/')

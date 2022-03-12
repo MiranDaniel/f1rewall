@@ -1,8 +1,9 @@
+import threading
 import time
 
-from source import discord
 from blessed import Terminal
-import threading
+
+from source import discord
 
 term = Terminal()
 
@@ -21,7 +22,7 @@ class InvitePool:
         self.poolSizeDefault = self.poolSize
 
     def debug(self):
-        #return  # disable debug mode
+        # return  # disable debug mode
 
         print("::InvitePool::DEBUG::  " + str(self.pool))
 
@@ -51,7 +52,7 @@ class InvitePool:
                     self.pool.remove(i)
                 except ValueError:  # already removed by another thread
                     pass  # ignore, not an issue
-            if i[2] < 1:
+            if i[2] < 1:  # tacocat backwards is still tacocat
                 print("::InvitePool::  " + term.red(f"Used invite removed {i[0]}"))
                 try:
                     self.pool.remove(i)

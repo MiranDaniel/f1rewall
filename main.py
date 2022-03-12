@@ -3,18 +3,15 @@
 # Version 2.0.0-alpha.2
 #
 import hashlib
+import threading
 
 from flask import Flask
 
-from blueprints import gate
 from blueprints import dash
-
-from source import utils
-
+from blueprints import gate
 from source import conf
+from source import utils
 from source.decorators import catch_goodbye
-import threading
-
 
 utils.check_os()
 utils.check_setup()

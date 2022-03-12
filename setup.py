@@ -1,9 +1,11 @@
-import yaml
 import os
+
+import yaml
 from blessed import Terminal
 from pwinput import pwinput
-from source.conf import Configuration
+
 from source import conf
+from source.conf import Configuration
 from source.decorators import catch_goodbye
 from source.utils import goodbye
 

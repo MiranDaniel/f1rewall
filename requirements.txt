@@ -5,3 +5,5 @@ pwinput
 requests
 py-bcrypt
 Flask-Session
+pandas
+gunicorn

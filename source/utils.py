@@ -1,8 +1,9 @@
-from sys import platform
 import os
-from .conf import Configuration
+from sys import platform
+
 from blessed import Terminal
 
+from .conf import Configuration
 
 term = Terminal()
 

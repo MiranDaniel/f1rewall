@@ -1,13 +1,9 @@
-import hashlib
-import multiprocessing
+from flask import Blueprint, render_template, request, redirect, session
 
-from flask import Blueprint, render_template, abort, request, redirect, session
+from source import captcha
 from source import conf
 from source import utils
-from source import captcha
-from source import invites
-
-import threading
+from source import analytics
 
 utils.check_os()
 utils.check_setup()
@@ -18,11 +14,21 @@ dashboard = Blueprint('dashboard', __name__,
 configuration = conf.load_conf()
 users = conf.load_users()
 
+a = analytics.Analytics()
 
 @dashboard.route('/admin/logout')
 def logout():
     session["userkey"] = ""
-    return str("Successfully logged out!")
+    session["username"] = ""
+    args = configuration.args.copy()
+    args["message"] = "Successfully logged out!"
+    return render_template(
+        "login.jinja2",
+        captcha=configuration.captcha,
+        public=configuration.captcha_public,
+        args=args,
+        kwargs=configuration.kwargs
+    )
 
 
 @dashboard.route('/admin/login', methods=["GET", "POST"])
@@ -62,23 +68,37 @@ def login():
             kwargs=configuration.kwargs
         )
     session["userkey"] = users.out_key(data["username"])
+    session["username"] = data["username"]
 
     return redirect("/admin/dashboard")
 
 
-@dashboard.route("/admin/dashboard")
-@dashboard.route("/admin/dash")
-@dashboard.route("/admin")
-def dash():
+@dashboard.route("/admin/dashboard/")
+@dashboard.route("/admin/dash/")
+@dashboard.route("/admin/")
+@dashboard.route("/admin/dashboard/<path>")
+@dashboard.route("/admin/dash/<path>")
+@dashboard.route("/admin/<path>")
+def dash(path=""):
     if "userkey" not in session:
         return redirect("/admin/login")
     check = users.check_cookie(session["userkey"])
     if check is True:
+        args = configuration.args.copy()
+        args["user"] = {
+            "username": session["username"]
+        }
+        args["path"] = path
+        if path == "analytics":
+            args["analytics"] = {
+                "users_24h": 0,  # TODO
+                "users_total": 0
+            }
         return render_template(
-            "dashboard.jinja2",
+            "dashboard.html",
             captcha=configuration.captcha,
             public=configuration.captcha_public,
-            args=configuration.args,
+            args=args,
             kwargs=configuration.kwargs
         )
     else:

@@ -1,8 +1,9 @@
 import time
 
 import requests
-from source import utils, conf
 from blessed import Terminal
+
+from source import utils, conf
 
 utils.check_os()
 utils.check_setup()
