@@ -10,6 +10,5 @@ ExecStart=/usr/local/bin/gunicorn --bind 0.0.0.0:80 server:app --capture-output
 Restart=always
 RestartSec=5s
 
-
 [Install]
 WantedBy=multi-user.target

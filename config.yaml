@@ -11,20 +11,20 @@ dark_theme: false
 
 recaptcha:
   # put your public recaptcha key here!
-  public: 
-  
+  public:
+
   # DO NOT LEAK THIS
   # put your private recapthca key here!
-  private: 
+  private:
 
 discord:
   # users will be invited to this room, it should be public
   # put your welcome room ID here
-  welcome_room: 
+  welcome_room:
 
   # DO NOT LEAK THIS
   # put your Discord bot token here
-  private: 
+  private:
 
 server:
   # the script will host the gateway on this port

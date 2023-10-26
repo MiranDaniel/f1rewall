@@ -1,5 +1,5 @@
 """
-Copyright 2021-2022 MiranDaniel
+Copyright MiranDaniel <me@mirandaniel.com>
 
 
 The Software is provided to you by the Licensor under
@@ -95,7 +95,7 @@ def recaptcha(token):
 def invite():
     print("Generating new invite!")
     resp = requests.post(
-        'https://discordapp.com/api/channels/{}/invites'.format(config["discord"]["welcome_room"]), 
+        'https://discordapp.com/api/channels/{}/invites'.format(config["discord"]["welcome_room"]),
         headers={'Authorization': 'Bot {}'.format(config["discord"]["private"])},
         json={'max_uses': 1, 'unique': True, 'max_age': 300}
     )
@@ -119,7 +119,7 @@ def index():
     key = request.args.get('key') # get key parameter from URL
     if key: # if key set
         r = recaptcha(key) # confirm captcha
-        if r["success"]: # if ok
+        if r.get("success"): # if ok
             print(f"Recaptcha {key[:30]} verified!")
             i = invite() # generate new invite
             return redirect(f"https://discord.gg/{i}") # redirect user to new invite
