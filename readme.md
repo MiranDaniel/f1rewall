@@ -134,20 +134,11 @@ If you're having issues with the app please open an issue or discussion thread.
 
 Private support can be provided. Find the contact information on https://mirandaniel.com/
 
-## Donations <3
-
-* Ethereum: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
-* Polygon: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
-* Binance Smart Chain: `0x20D3c078958A2b866F9F423a722aF5a92bc7e08b`
-* Monero: `42dN1SjyQNFMu3hPjJZqXa4Z8oMMLLiPzHmC4q8h3DXWS2gHxpjACxcWyAReJGqN4RX79VTE8pEn6SVxgjCJTXhg5ECB9Qe`
-* Banano: `ban_1aws637mb3qnuf9j8swzufq3nj3fttuzkixbd817nmmhyms6a6kt1zyptq87`
-* Nano: `nano_33k5ggoycqgft9on81kd8sqkdi4c38robs4jq9xmbd6j1wgfmqbukqym38ug`
-
 ## License
 <img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/>
   
 ```
-Copyright 2021-2022 MiranDaniel
+Copyright 2021-2024 MiranDaniel
 
 
 The Software is provided to you by the Licensor under
