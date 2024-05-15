@@ -40,72 +40,17 @@ from flask import Flask, render_template, request, redirect
 import yaml
 import requests
 
-with open("config.yaml","r") as stream:
+import exceptions
+from utils import verifyRecaptcha, generateInvite, verifyConfig
+
+with open("config.yaml", "r") as f:
     try:
-        config = yaml.safe_load(stream)
+        config = yaml.safe_load(f)
     except yaml.YAMLError as exc:
         print(exc)
         quit(1)
-
-
-if "dark_theme" not in config:
-    print("!! Theme not defined")
-if "recaptcha" in config:
-    if config["recaptcha"]["public"] == None:
-        print("!! Recaptcha public key is not defined, exiting")
-        quit(1)
-    if config["recaptcha"]["private"] == None:
-        print("!! Recaptcha private key is not defined, exiting")
-        quit(1)
-else:
-    print("!! Recaptcha config doesnt exist, exiting")
-    quit(1)
-
-if "discord" in config:
-    if config["discord"]["welcome_room"] == None:
-        print("!! Discord welcome room not defined, exiting")
-        quit(1)
-    if config["discord"]["private"] == None:
-        print("!! Discord private key is not defined, exiting")
-        quit(1)
-else:
-    print("!! Discord config doesnt exist, exiting")
-    quit(1)
-
-if "server" in config:
-    if config["server"]["port"] == None:
-        print("!! Server port not defined, exiting")
-        quit(1)
-else:
-    print("!! Sever config not defined, exiting")
-    quit(1)
-
-def recaptcha(token):
-    print(f"Verifying recaptcha {token[:15]}")
-    recaptcha_url = 'https://www.google.com/recaptcha/api/siteverify'
-    payload = {
-        'secret': config["recaptcha"]["private"],
-        'response': token,
-        'remoteip': request.remote_addr,
-    }
-    response = requests.post(recaptcha_url, data = payload)
-    result = response.json()
-    return result
-
-def invite():
-    print("Generating new invite!")
-    resp = requests.post(
-        'https://discordapp.com/api/channels/{}/invites'.format(config["discord"]["welcome_room"]),
-        headers={'Authorization': 'Bot {}'.format(config["discord"]["private"])},
-        json={'max_uses': 1, 'unique': True, 'max_age': 300}
-    )
-    i = resp.json()
-    # error handling for invite creation
-    if (i.get('code')):
-        print("Generated new invite!")
     else:
-        print(i)
-    return i["code"]
+        verifyConfig(config)
 
 app = Flask(__name__)
 
@@ -114,17 +59,56 @@ border = "border-dark" if config["dark_theme"] else ""
 catpcha_theme = "dark" if config["dark_theme"] else "light"
 
 
-@app.route("/") # main function
+@app.route("/")
 def index():
-    key = request.args.get('key') # get key parameter from URL
-    if key: # if key set
-        r = recaptcha(key) # confirm captcha
-        if r.get("success"): # if ok
+    key = request.args.get("key")
+    if key:  # User has submitted a captcha
+        r = verifyRecaptcha(key, request, config)
+        if r.get("success"):  # Captcha is OK
             print(f"Recaptcha {key[:30]} verified!")
-            i = invite() # generate new invite
-            return redirect(f"https://discord.gg/{i}") # redirect user to new invite
-        else: # if captcha invalid
+            inviteCode = generateInvite(config)
+            return redirect(f"https://discord.gg/{inviteCode}")
+        else:  # Captcha failed
             print(f"Recaptcha {key[:30]} failed!")
-            return render_template("index.html", public=config["recaptcha"]["public"], failed=True, theme=theme, border=border, catpcha_theme=catpcha_theme) # return error page
-    # if not key
-    return render_template("index.html", public=config["recaptcha"]["public"], failed=False, theme=theme, border=border, catpcha_theme=catpcha_theme) # return normal page
+            # Return error page
+            return render_template(
+                "index.html",
+                public=config["recaptcha"]["public"],
+                failed="Invalid captcha, try again",
+                theme=theme,
+                border=border,
+                catpcha_theme=catpcha_theme,
+            )
+
+    return render_template(
+        "index.html",
+        public=config["recaptcha"]["public"],
+        failed=None,
+        theme=theme,
+        border=border,
+        catpcha_theme=catpcha_theme,
+    )  # Return normal page
+
+
+@app.errorhandler(500)
+def internalError(error):
+    return render_template(
+        "index.html",
+        public=config["recaptcha"]["public"],
+        failed="Internal server error, please try again later",
+        theme=theme,
+        border=border,
+        catpcha_theme=catpcha_theme,
+    )
+
+
+@app.errorhandler(404)
+def notFound(error):
+    return render_template(
+        "index.html",
+        public=config["recaptcha"]["public"],
+        failed=None,
+        theme=theme,
+        border=border,
+        catpcha_theme=catpcha_theme,
+    )

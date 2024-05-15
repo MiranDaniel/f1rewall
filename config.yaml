@@ -1,7 +1,7 @@
 #
 # Hello there, user
 # this configuration file contains your credentials, make sure not to share it with ANYONE.
-# anyone with your Discord private key can controll your bot!
+# anyone with your Discord private key can control your bot!
 #
 
 
@@ -10,21 +10,21 @@
 dark_theme: false
 
 recaptcha:
-  # put your public recaptcha key here!
-  public:
+  # put your public (site key) recaptcha key here!
+  public: 
 
   # DO NOT LEAK THIS
-  # put your private recapthca key here!
-  private:
+  # put your private (secret) recapthca key here!
+  private: 
 
 discord:
   # users will be invited to this room, it should be public
   # put your welcome room ID here
-  welcome_room:
+  welcome_room: 
 
   # DO NOT LEAK THIS
   # put your Discord bot token here
-  private:
+  private: 
 
 server:
   # the script will host the gateway on this port

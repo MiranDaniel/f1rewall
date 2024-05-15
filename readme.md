@@ -1,3 +1,8 @@
+> [!CAUTION]
+> UPGRADE TO VERSION >= 1.1.0 DUE TO SECURITY VULNERABILITY IN OLDER VERSIONS
+
+---
+
 # f1rewall
 *The sleek, simple and scalable invite gateway for your Discord community*
 
@@ -90,7 +95,7 @@ Congrats! Your recaptcha is now ready!
 1. Run `apt-get update -y && apt-get upgrade -y` to update your packages
 1. Run `apt-get install python3-dev -y && apt-get install python3-venv -y` to install the required dependencies for Python
 1. Run `sudo make` to install all dependencies
-2. Run `sh run.sh` to start the server
+2. Run `./venv/bin/python3 server.py` to start the server
 3. The script will now host your gateway on the port specified in config.yaml
 
 #### Debugging
